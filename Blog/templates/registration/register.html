@@ -1,0 +1,40 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h2 class="mb-4 text-primary fw-bold">创建新账号</h2>
+        <p class="text-muted">加入我们，开始分享你的故事</p>
+        
+        <form method="post" action="{% url 'blogs:register' %}" class="mt-4 text-start">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg">立即注册</button>
+            </div>
+        </form>
+        
+        <div class="mt-4 border-top pt-3">
+            <a href="{% url 'login' %}" class="text-decoration-none text-secondary">已有账号？去登录</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 让注册表单里的输入框也变漂亮 */
+    input[type="text"], input[type="password"], input[type="email"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        margin-top: 5px;
+    }
+    .helptext { font-size: 0.85rem; color: #6c757d; display: block; margin-bottom: 15px; }
+    ul { list-style: none; padding-left: 0; font-size: 0.8rem; color: #dc3545; }
+</style>
+{% endblock content %}
